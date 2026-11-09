@@ -1,0 +1,12 @@
+---
+title: "Regression - real estate pricing"
+date: 2025-03-01
+categories: [ML]
+---
+
+This project deals with using ML algorithms to classify data points. We will be using Decision trees, Linear Regression, and Random forests.
+Deep learning algorithms
+
+Natural Language processing
+
+Even more content...

@@ -1,0 +1,26 @@
+---
+title: "Text Generation using Natural Language Processing and Transformers"
+format:
+  html:
+    css: styles.scss
+    grid:
+      body-width: 800px
+date: 2025-03-05
+author: Shaik M. Jani Basha
+categories: [NATURAL LANGUAGE PROCESSING, GENERATIVE AI]
+thumbnail: image.png
+title-block-banner: true
+toc: true
+#page-layout: article
+---
+
+This project deals with using ML algorithms to classify data points. We will be using Decision trees, Linear Regression, and Random forests.
+Deep learning algorithms
+
+Natural Language processing
+
+Even more content...
+
+Deep learning algorithms
+
+Natural Language processing

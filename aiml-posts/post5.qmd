@@ -1,0 +1,15 @@
+---
+title: "Image Segmentation"
+date: 2025-03-01
+categories: [DL, CV]
+---
+
+This project deals with using ML algorithms to classify data points. We will be using Decision trees, Linear Regression, and Random forests.
+Deep learning algorithms
+
+
+Deep learning algorithms
+
+Natural Language processing
+
+test the content

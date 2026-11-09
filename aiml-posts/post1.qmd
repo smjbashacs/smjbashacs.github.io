@@ -1,0 +1,24 @@
+---
+title: "Classification of IRIS Data"
+date: 2025-03-01
+categories: [ML]
+execute:
+  echo: true  # Show all code blocks by default
+  output: true  # Show all outputs by default
+  freeze: true  # Use pre-executed outputs from notebook
+---
+
+This project deals with using ML algorithms to classify data points. We will be using Decision trees, Linear Regression, and Random forests.
+Deep learning algorithms. And also here I want to explore different projects related to MLP, text generation and Generative AI models, which are quite crucial for current world. I will like to share all these projects on open source.
+
+Natural Language processing
+
+Even more content...
+
+Deep learning algorithms
+
+Natural Language processing
+
+Even more content...
+
+Trying this new expanded feature

@@ -1,0 +1,21 @@
+[
+  {
+    "listing": "/index.html",
+    "items": [
+      "/posts/post-with-code/index.html",
+      "/posts/welcome/index.html"
+    ]
+  },
+  {
+    "listing": "/projects.html",
+    "items": [
+      "/aiml-posts/Text generation/logisticregression.html",
+      "/aiml-posts/post6.html",
+      "/aiml-posts/post4.html",
+      "/aiml-posts/post5.html",
+      "/aiml-posts/post1.html",
+      "/aiml-posts/post2.html",
+      "/aiml-posts/post3.html"
+    ]
+  }
+]

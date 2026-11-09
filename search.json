@@ -1,0 +1,121 @@
+[
+  {
+    "objectID": "aiml-posts/post3.html",
+    "href": "aiml-posts/post3.html",
+    "title": "Sentiment analysis",
+    "section": "",
+    "text": "This project deals with using ML algorithms to classify data points.\nWe will be using Decision trees, Linear Regression, and Random forests. Deep learning algorithms\nNatural Language processing\nEven more content…"
+  },
+  {
+    "objectID": "aiml-posts/post1.html",
+    "href": "aiml-posts/post1.html",
+    "title": "Classification of IRIS Data",
+    "section": "",
+    "text": "This project deals with using ML algorithms to classify data points. We will be using Decision trees, Linear Regression, and Random forests. Deep learning algorithms. And also here I want to explore different projects related to MLP, text generation and Generative AI models, which are quite crucial for current world. I will like to share all these projects on open source.\nNatural Language processing\nEven more content…\nDeep learning algorithms\nNatural Language processing\nEven more content…\nTrying this new expanded feature"
+  },
+  {
+    "objectID": "aiml-posts/post4.html",
+    "href": "aiml-posts/post4.html",
+    "title": "Image detection",
+    "section": "",
+    "text": "This project deals with using ML algorithms to classify data points. We will be using Decision trees, Linear Regression, and Random forests. Deep learning algorithms\nNatural Language processing\nEven more content…\nDeep learning algorithms\nNatural Language processing\nEven more content…"
+  },
+  {
+    "objectID": "aiml-posts/Text generation/logisticregression.html",
+    "href": "aiml-posts/Text generation/logisticregression.html",
+    "title": "Real Estate Pricing using Machine Learning Regression models and Deep Learning",
+    "section": "",
+    "text": "This projest deals with classification of IRIS dataset. SO we built our own decision tree and compared the performance with sklean library"
+  },
+  {
+    "objectID": "aiml-posts/Text generation/logisticregression.html#import-the-required-libraries",
+    "href": "aiml-posts/Text generation/logisticregression.html#import-the-required-libraries",
+    "title": "Real Estate Pricing using Machine Learning Regression models and Deep Learning",
+    "section": "1.1 Import the required libraries",
+    "text": "1.1 Import the required libraries\nWe will be using NLTK, an opensource NLP library, for collecting, handling, and processing Twitter data. In this lab, we will use the example dataset that comes alongside with NLTK. This dataset has been manually annotated and serves to establish baselines for models quickly.\nSo, to start, let’s import the required libraries.\n\nimport nltk                         # NLP toolbox\nfrom os import getcwd\nimport pandas as pd                 # Library for Dataframes \nfrom nltk.corpus import twitter_samples \nimport matplotlib.pyplot as plt     # Library for visualization\nimport numpy as np                  # Library for math functions\n\nfrom utils import process_tweet, build_freqs # Our functions for NLP\n\nnltk.download('twitter_samples')\n\n[nltk_data] Downloading package twitter_samples to\n[nltk_data]     /home/jovyan/nltk_data...\n[nltk_data]   Unzipping corpora/twitter_samples.zip.\n\n\nTrue"
+  },
+  {
+    "objectID": "aiml-posts/Text generation/logisticregression.html#load-the-nltk-sample-dataset",
+    "href": "aiml-posts/Text generation/logisticregression.html#load-the-nltk-sample-dataset",
+    "title": "Real Estate Pricing using Machine Learning Regression models and Deep Learning",
+    "section": "1.2 Load the NLTK sample dataset",
+    "text": "1.2 Load the NLTK sample dataset\nTo complete this lab, you need the sample dataset of the previous lab. Here, we assume the files are already available, and we only need to load into Python lists.\n\n# select the set of positive and negative tweets\nall_positive_tweets = twitter_samples.strings('positive_tweets.json')\nall_negative_tweets = twitter_samples.strings('negative_tweets.json')\n\ntweets = all_positive_tweets + all_negative_tweets ## Concatenate the lists. \nlabels = np.append(np.ones((len(all_positive_tweets),1)), np.zeros((len(all_negative_tweets),1)), axis = 0)\n\n# split the data into two pieces, one for training and one for testing (validation set) \ntrain_pos  = all_positive_tweets[:4000]\ntrain_neg  = all_negative_tweets[:4000]\n\ntrain_x = train_pos + train_neg \n\nprint(\"Number of tweets: \", len(train_x))\n\nNumber of tweets:  8000"
+  },
+  {
+    "objectID": "aiml-posts/Text generation/logisticregression.html#load-a-pretrained-logistic-regression-model",
+    "href": "aiml-posts/Text generation/logisticregression.html#load-a-pretrained-logistic-regression-model",
+    "title": "Real Estate Pricing using Machine Learning Regression models and Deep Learning",
+    "section": "2.1 Load a pretrained Logistic Regression model",
+    "text": "2.1 Load a pretrained Logistic Regression model\nIn the same way, as part of this week’s assignment, a Logistic regression model must be trained. The next cell contains the resulting model from such training. Notice that a list of 3 numeric values represents the whole model, that we have called theta \\(\\theta\\).\n\ntheta = [6.03518871e-08, 5.38184972e-04, -5.58300168e-04]"
+  },
+  {
+    "objectID": "aiml-posts/Text generation/logisticregression.html#plot-the-samples-in-a-scatter-plot",
+    "href": "aiml-posts/Text generation/logisticregression.html#plot-the-samples-in-a-scatter-plot",
+    "title": "Real Estate Pricing using Machine Learning Regression models and Deep Learning",
+    "section": "2.2 Plot the samples in a scatter plot",
+    "text": "2.2 Plot the samples in a scatter plot\nThe vector theta represents a plane that split our feature space into two parts. Samples located over that plane are considered positive, and samples located under that plane are considered negative. Remember that we have a 3D feature space, i.e., each tweet is represented as a vector comprised of three values: [bias, positive_sum, negative_sum], always having bias = 1.\nIf we ignore the bias term, we can plot each tweet in a cartesian plane, using positive_sum and negative_sum. In the cell below, we do precisely this. Additionally, we color each tweet, depending on its class. Positive tweets will be green and negative tweets will be red.\n\n# Plot the samples using columns 1 and 2 of the matrix\nfig, ax = plt.subplots(figsize = (8, 8))\n\ncolors = ['red', 'green']\n\n# Color based on the sentiment Y\nax.scatter(X[:,1], X[:,2], c=[colors[int(k)] for k in Y], s = 0.1)  # Plot a dot for each pair of words\nplt.xlabel(\"Positive\")\nplt.ylabel(\"Negative\")\n\nText(0, 0.5, 'Negative')\n\n\n\n\n\n\n\n\n\nFrom the plot, it is evident that the features that we have chosen to represent tweets as numerical vectors allow an almost perfect separation between positive and negative tweets. So you can expect a very high accuracy for this model!"
+  },
+  {
+    "objectID": "aiml-posts/Text generation/logisticregression.html#plot-the-model-alongside-the-data",
+    "href": "aiml-posts/Text generation/logisticregression.html#plot-the-model-alongside-the-data",
+    "title": "Real Estate Pricing using Machine Learning Regression models and Deep Learning",
+    "section": "2.3 Plot the model alongside the data",
+    "text": "2.3 Plot the model alongside the data\nWe will draw a gray line to show the cutoff between the positive and negative regions. In other words, the gray line marks the line where \\[ z = \\theta * x = 0.\\] To draw this line, we have to solve the above equation in terms of one of the independent variables.\n\\[ z = \\theta * x = 0\\] \\[ x = [1, pos, neg] \\] \\[ z(\\theta, x) = \\theta_0+ \\theta_1 * pos + \\theta_2 * neg = 0 \\] \\[ neg = (-\\theta_0 - \\theta_1 * pos) / \\theta_2 \\]\nThe red and green lines that point in the direction of the corresponding sentiment are calculated using a perpendicular line to the separation line calculated in the previous equations (neg function). It must point in the same direction as the derivative of the Logit function, but the magnitude may differ. It is only for a visual representation of the model.\n\\[direction = pos * \\theta_2 / \\theta_1\\]\n\n# Equation for the separation plane\n# It give a value in the negative axe as a function of a positive value\n# f(pos, neg, W) = w0 + w1 * pos + w2 * neg = 0\n# s(pos, W) = (-w0 - w1 * pos) / w2\ndef neg(theta, pos):\n    return (-theta[0] - pos * theta[1]) / theta[2]\n\n# Equation for the direction of the sentiments change\n# We don't care about the magnitude of the change. We are only interested \n# in the direction. So this direction is just a perpendicular function to the \n# separation plane\n# df(pos, W) = pos * w2 / w1\ndef direction(theta, pos):\n    return pos * theta[2] / theta[1]\n\nThe green line in the chart points in the direction where z &gt; 0 and the red line points in the direction where z &lt; 0. The direction of these lines are given by the weights \\(\\theta_1\\) and \\(\\theta_2\\)\n\n# Plot the samples using columns 1 and 2 of the matrix\nfig, ax = plt.subplots(figsize = (8, 8))\n\ncolors = ['red', 'green']\n\n# Color base on the sentiment Y\nax.scatter(X[:,1], X[:,2], c=[colors[int(k)] for k in Y], s = 0.1)  # Plot a dot for each pair of words\nplt.xlabel(\"Positive\")\nplt.ylabel(\"Negative\")\n\n# Now lets represent the logistic regression model in this chart. \nmaxpos = np.max(X[:,1])\n\noffset = 5000 # The pos value for the direction vectors origin\n\n# Plot a gray line that divides the 2 areas.\nax.plot([0,  maxpos], [neg(theta, 0),   neg(theta, maxpos)], color = 'gray') \n\n# Plot a green line pointing to the positive direction\nax.arrow(offset, neg(theta, offset), offset, direction(theta, offset), head_width=500, head_length=500, fc='g', ec='g')\n# Plot a red line pointing to the negative direction\nax.arrow(offset, neg(theta, offset), -offset, -direction(theta, offset), head_width=500, head_length=500, fc='r', ec='r')\n\nplt.show()\n\n\n\n\n\n\n\n\nNote that more critical than the Logistic regression itself, are the features extracted from tweets that allow getting the right results in this exercise.\nThat is all, folks. Hopefully, now you understand better what the Logistic regression model represents, and why it works that well for this specific problem."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Shaik M. Jani Basha",
+    "section": "",
+    "text": "Post With Code\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\nNov 9, 2026\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nNov 6, 2026\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "posts/post-with-code/index.html",
+    "href": "posts/post-with-code/index.html",
+    "title": "Post With Code",
+    "section": "",
+    "text": "This is a post with executable code."
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "AI/ML Projects",
+    "section": "",
+    "text": "Real Estate Pricing using Machine Learning Regression models and Deep Learning\n\n\n\n\n\n\nMACHINE LEARNING\n\n\nGENERATIVE AI\n\n\n\n\n\n\n\n\n\nMar 5, 2025\n\n\nShaik M. Jani Basha\n\n\n\n\n\n\n\n\n\n\n\n\nText Generation using Natural Language Processing and Transformers\n\n\n\n\n\n\nNATURAL LANGUAGE PROCESSING\n\n\nGENERATIVE AI\n\n\n\n\n\n\n\n\n\nMar 5, 2025\n\n\nShaik M. Jani Basha\n\n\n\n\n\n\n\n\n\n\n\n\nImage detection\n\n\n\n\n\n\nDL\n\n\nCV\n\n\n\n\n\n\n\n\n\nMar 1, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nImage Segmentation\n\n\n\n\n\n\nDL\n\n\nCV\n\n\n\n\n\n\n\n\n\nMar 1, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nClassification of IRIS Data\n\n\n\n\n\n\nML\n\n\n\n\n\n\n\n\n\nMar 1, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nRegression - real estate pricing\n\n\n\n\n\n\nML\n\n\n\n\n\n\n\n\n\nMar 1, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nSentiment analysis\n\n\n\n\n\n\nNLP\n\n\nML\n\n\n\n\n\n\n\n\n\nMar 1, 2025\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this blog"
+  },
+  {
+    "objectID": "aiml-posts/post6.html",
+    "href": "aiml-posts/post6.html",
+    "title": "Text Generation using Natural Language Processing and Transformers",
+    "section": "",
+    "text": "This project deals with using ML algorithms to classify data points. We will be using Decision trees, Linear Regression, and Random forests. Deep learning algorithms\nNatural Language processing\nEven more content…\nDeep learning algorithms\nNatural Language processing"
+  },
+  {
+    "objectID": "aiml-posts/post5.html",
+    "href": "aiml-posts/post5.html",
+    "title": "Image Segmentation",
+    "section": "",
+    "text": "This project deals with using ML algorithms to classify data points. We will be using Decision trees, Linear Regression, and Random forests. Deep learning algorithms\nDeep learning algorithms\nNatural Language processing\ntest the content"
+  },
+  {
+    "objectID": "aiml-posts/post2.html",
+    "href": "aiml-posts/post2.html",
+    "title": "Regression - real estate pricing",
+    "section": "",
+    "text": "This project deals with using ML algorithms to classify data points. We will be using Decision trees, Linear Regression, and Random forests. Deep learning algorithms\nNatural Language processing\nEven more content…"
+  }
+]
